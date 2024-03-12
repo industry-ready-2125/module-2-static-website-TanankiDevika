@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Novel Nest</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script>
+        <!-- function validateLoginForm() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            if (username.length < 6) {
+                alert('Username must be at least 6 characters.');
+                return false;
+            } else if (password.length < 8) {
+                alert('Password must be at least 8 characters.');
+                return false;
+            }
+
+            return true;
+        } -->
+        function validateform()
+    {
+       //username validate
+       var username = document.getElementById("username").value;
+        var user_Regex = /^[a-zA-Z0-9_-]{4,20}$/;
+        if (!user_Regex.test(username)) {
+document.getElementById("usermsg").innerHTML = "Username is invalid";
+          return false;
+        } 
+        else {
+document.getElementById("usermsg").innerHTML = ""; // Clear previous error messages
+        }
+        var pwd=document.getElementById("pswd").value;
+        //check empty password field  
+        if(pwd==""){
+document.getElementById("message").innerHTML="*password field should not be empty!";
+            return false;
+        }
+        //minimum password length validation  
+        else if(pwd.length< 8) {  
+document.getElementById("message").innerHTML = "**Password length must be atleast 8 characters";  
+             return false;  
+        }  
+//maximum length of password validation  
+        else if(pwd.length> 15) {  
+document.getElementById("message").innerHTML = "**Password length must not exceed 15 characters";  
+            return false;  
+        } 
+        //  validate capital letters
+        else if(!pwd.match(/[A-Z]/g))
+        {
+document.getElementById("message").innerHTML = "**Password must contain atleast one uppercase letter ";
+            return false;
+        }
+       // Validate numbers
+        else if(!pwd.match(/[0-9]/g))
+        {
+document.getElementById("message").innerHTML = "**Password must contain atleast one number ";
+            return false;
+        }
+        
+        else if (!pwd.match(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/)) {
+document.getElementById("message").innerHTML = "**Password must contain at least one special character";
+            return false;
+        }
+        else {
+document.getElementById("message").innerHTML = ""; // Clear previous error messages
+        }
+     }
+    </script>
+    <style>
+        body {
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            margin: 0;
+            background: url("studentbg.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+        .loginbox {
+            text-align: center;
+            background-color: #0a0a0a; 
+            padding: 20px; 
+            border-radius: 8px;
+            width: 300px;
+            background: rgba(150, 205, 214, 0.623);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.2);
+            border: 2px solid rgba(255,255,255,.5);
+            border-right: 2px solid rgba(255,255,255,.2);
+            border-bottom: 2px solid rgba(255,255,255,.2);
+            backdrop-filter: blur(60px)
+            
+        }
+        a {
+            color: #0c0b0bef;
+            text-decoration: none; /* Remove underline from the link */
+            display: block; /* Ensure the entire link area is clickable */
+            margin-top: 10px;
+
+        }
+        
+        </style>
+   
+    
+    
+</head>
+
+<body>
+
+    <div class="loginbox">
+        <h1>Login</h1>
+        <form action="login_process.php" method="post" onsubmit="validateLoginForm();">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username" placeholder="Enter Username"><br>
+
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" placeholder="Enter password" required>
+
+            <a href="C:\Users\mounika\OneDrive\Desktop\chandu\.vscode\forgetpassword.html">Forget Password?</a>
+            <input type="submit" value="Login">
+            <br><a href="registration.html">Don't have an account?</a>
+            
+        
+        </form>
+    </div>
+</body>
+
+</html>
